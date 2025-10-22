@@ -26,5 +26,5 @@ In this lab you’ll create a Stack using linked lists. To do this the class LLS
 In order to test functions individually, you can use the following:
 `make test try={functionName}`
 
-For example, to try a function `printArray()` function, you can run:
+For example, to try a function `printArray()` function, you can run:              //
 `make test try=printArray` *(No spaces)* -->
