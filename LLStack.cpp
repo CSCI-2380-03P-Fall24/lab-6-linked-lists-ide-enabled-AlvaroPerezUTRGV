@@ -6,6 +6,8 @@
 	// so be sure that the "next" Node is linked to a nullptr
 Node::Node(string s) 
 {
+	data = s; //stores the string to data
+	next = nullptr; //initilized node to nothing
 
 }
 
@@ -14,7 +16,9 @@ Node::Node(string s)
 	// the head and tail should both be initialized as null pointers
 LLStack::LLStack()
 {
-
+	head = nullptr; //nothing in head
+	tail = nullptr; //nothing in tail
+	count = 0; //sets the counter to 0
 }
 
 /*
@@ -24,7 +28,13 @@ LLStack::LLStack()
 */
 string LLStack::top()
 {
-	return "fixthis";
+	if (head == nullptr){ //checks if the stack is empty
+		return ""; //retuns nothing
+	}
+	else{
+		return head -> data; //gets the top of the stack and returns it
+	}
+	
 }
 
 /*
@@ -32,7 +42,7 @@ string LLStack::top()
 */
 int LLStack::size()
 {
-	return -1;
+	return count; //returns the count that we started earlier
 }
 
 /*
@@ -45,7 +55,16 @@ int LLStack::size()
 */
 void LLStack::push(string s)
 {
-
+	Node * newNode = new Node(s); //created new node
+	if (head == nullptr){ //checks if the stack is empty
+		head = newNode; //points to the new node
+		tail = newNode; //points to the new node
+	}
+	else{
+		newNode -> next = head; //links the element
+		head = newNode; //updates the head
+	}
+	count++;
 }
 
 /*
@@ -57,7 +76,20 @@ void LLStack::push(string s)
 */
 void LLStack::pop()
 {
-
+	if (head == nullptr){
+		return;
+	}
+	if (head == tail){
+		delete head;
+		head = nullptr;
+		tail = nullptr;
+	}
+	else{
+		Node * temp = head;
+		head = head -> next;
+		delete temp;
+	}
+	count--;
 }
 
 /*
@@ -82,6 +114,38 @@ void LLStack::pop()
 */
 int LLStack::removeAll(const string& target) 
 {
-	return -1;
+	int removed = 0; //how many items have been removed
+	Node * current = head; //creates new node that stores head
+	Node * previous = nullptr; // new node that is empty
+
+	while (current != nullptr){ //while the current does not equall nullptr
+		if (current -> data == target){
+			Node * next = current -> next;
+			if (previous == nullptr){
+				head = next;
+			}
+			else{
+				previous -> next = next;
+			}
+
+			if (current == tail){ 
+				tail = previous;
+			}
+			delete current; //delete the current
+			current = next; //update current
+			removed++; //increments
+			count--; //decreases the count
+		}
+		else{
+			previous = current;
+			current = current -> next;
+		}
+	}
+
+	if (head == nullptr){
+		tail = nullptr;
+	}
+
+	return removed;
 }
 
