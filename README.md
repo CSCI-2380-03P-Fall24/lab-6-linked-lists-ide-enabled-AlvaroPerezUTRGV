@@ -1,4 +1,4 @@
-# Lab 6 - Linked List Stack
+<!-- # Lab 6 - Linked List Stack
 Complete the exercises in LLStack.cpp (class/function definitions - no main() function should be written).
 
 In this lab you’ll create a Stack using linked lists. To do this the class LLStack has declared some useful variables, pointers, functions, and the class Node.
@@ -27,4 +27,4 @@ In order to test functions individually, you can use the following:
 `make test try={functionName}`
 
 For example, to try a function `printArray()` function, you can run:
-`make test try=printArray` *(No spaces)*
+`make test try=printArray` *(No spaces)* -->
